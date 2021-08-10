@@ -1,0 +1,33 @@
+---
+title: "Penguin Filtering"
+author: "Wylie Hampson"
+date: "8/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+```
+
+I want to create a scatterplot of flipper length vs. body mass with body mass converted to kilograms, only for Adelie penguins.
+
+```{r}
+adelies <- penguins %>% 
+  filter(species == "Adelie") %>% 
+  mutate(body_mass_kg = body_mass_g / 1000)
+
+adelies
+```
+
+Make the plot
+
+```{r}
+adelies_plot <- ggplot(data = adelies, aes(x = flipper_length_mm, y = body_mass_kg)) +
+  geom_point(aes(color = island)) +
+  facet_wrap(~island)
+
+adelies_plot
+```
+

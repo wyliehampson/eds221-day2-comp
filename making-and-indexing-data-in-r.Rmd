@@ -1,0 +1,124 @@
+---
+title: "Making and indexing data in R"
+author: "Wylie Hampson"
+date: "8/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(tidyverse)
+```
+
+## Make some vectors and check them out
+
+```{r}
+dogs <- c(10.5, 40, "waffle", 8L, TRUE)
+dogs
+
+# Check the class
+class(dogs)
+```
+
+```{r}
+dog_age <- c(1.4, 5.2, 6, 10)
+class(dog_age)
+typeof(dog_age)
+
+dog_miles <- c(4L, 5L, 6L)
+class(dog_miles)
+typeof(dog_miles)
+
+is.character(dog_miles)
+is.character(dogs)
+```
+
+```{r}
+dog_food <- c(teddy = "purina",
+              khora = "alpo",
+              waffle = "fancy feast",
+              banjo = "blue diamond")
+
+dog_food
+class(dog_food)
+
+khora_food <- dog_food[2]
+dog_food["khora"]
+
+khora_food
+
+dog_size <- c(teddy = 50, khora = 55)
+test <- 6 + dog_size[2]
+test
+```
+
+```{r}
+cars <- c("red", "white", "yellow", "silver", "blue", "black", "purple", "green", "gray")
+
+cars[2:5]
+
+i <- 3
+cars[i]
+
+i <- c(1, 5, 7)
+cars[i]
+
+cars[3] <- "BURRITOS"
+cars
+```
+
+## Lists in R
+
+```{r}
+urchins <- list("blue",
+                c(1, 2, 3),
+                seq(from = 0, to = 50,by = 0.5),
+                1200L)
+urchins
+
+urchins[[1]]
+urchins[1]
+
+```
+
+```{r}
+tacos <- list(topping = c("onion", "cilantro", "guacamole"),
+              filling = c("beans", "meant", "veggies"),
+              price = c(6.75, 8.25, 9.50))
+
+tacos
+
+taco_prices <- tacos[[3]]
+taco_prices
+
+taco_fillings <- tacos$filling
+taco_fillings
+```
+
+## Data frames
+
+```{r}
+fruit <- data.frame(type = c("apple", "banana", "peach"),
+                    mass = c(130, 195, 150))
+
+fruit
+
+class(fruit)
+class(fruit$mass)
+
+# Two ways to get the whole fruit column
+fruit$type
+fruit[, 1]
+
+```
+
+
+
+
+
+
+
+
+
+
